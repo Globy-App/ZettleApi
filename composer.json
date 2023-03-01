@@ -1,8 +1,13 @@
 {
-  "name": "laulamanapps/izettle-api",
+  "name": "net-tools/zettle-api",
   "description": "Zettle by PayPal API PHP Client",
   "license": "MIT",
   "authors": [
+	{
+		"name": "Pierre",
+		"email": "dev@nettools.ovh",
+		"role": "Developer"
+	},
     {
       "name": "Laurens Laman",
       "email": "laurens.laman@llaman.nl"
