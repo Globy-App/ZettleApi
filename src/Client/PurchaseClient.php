@@ -23,8 +23,8 @@ final class PurchaseClient
     private $client;
     private $purchaseHistoryBuilder;
     private $purchaseBuilder;
-	private $queryParams;
-	
+    private $queryParams;
+
 
     public function __construct(
         IzettleClientInterface $client,
@@ -59,7 +59,7 @@ final class PurchaseClient
 
         return $this->purchaseBuilder->buildFromJson($json);
     }
-	
+
 
     /**
      * @param $key
@@ -69,6 +69,7 @@ final class PurchaseClient
     public function setQueryParam($key, $value)
     {
         $this->queryParams[$key] = $value;
+
         return $this;
     }
 
@@ -102,18 +103,19 @@ final class PurchaseClient
     public function limit(int $limit)
     {
         $limit = $limit > 999 ? 1000 : $limit;
-        return $this->setQueryParam('limit',  $limit);
-    }	
-	
-	
-	/**
-	 * Sort results by most recent (true)
-	 *
-	 * @param bool $b
-	 * @return $this
-	 */
-	public function descending($b)
-	{
-		return $this->setQueryParam('descending',  $b ? 'true':'false');
-	}
+
+        return $this->setQueryParam('limit', $limit);
+    }
+
+
+    /**
+     * Sort results by most recent (true)
+     *
+     * @param bool $b
+     * @return $this
+     */
+    public function descending($b)
+    {
+        return $this->setQueryParam('descending', $b ? 'true' : 'false');
+    }
 }

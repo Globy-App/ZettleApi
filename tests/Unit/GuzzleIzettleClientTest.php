@@ -61,8 +61,8 @@ final class GuzzleIzettleClientTest extends TestCase
         $accessToken = 'accessToken';
         $refreshToken = 'refreshToken';
         $expiresIn = 7200;
-        $username ='username';
-        $password ='password';
+        $username = 'username';
+        $password = 'password';
         $options = [
             'headers' => ['Content-Type' => 'application/x-www-form-urlencoded'],
             'form_params' => [
