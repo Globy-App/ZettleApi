@@ -38,7 +38,11 @@ final class PurchaseClient
 
     public function getPurchaseHistory(): PurchaseHistory
     {
-        $json = $this->client->getJson($this->client->get(self::GET_PURCHASES, $this->queryParams));
+        if ($this->queryParams === null) {
+            $json = $this->client->getJson($this->client->get(self::GET_PURCHASES));
+        } else {
+            $json = $this->client->getJson($this->client->get(self::GET_PURCHASES, $this->queryParams));
+        }
 
         return $this->purchaseHistoryBuilder->buildFromJson($json);
     }

@@ -20,6 +20,7 @@ use LauLamanApps\IzettleApi\GuzzleIzettleClient;
 use Mockery;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\StreamInterface;
 
 /**
  * @small
@@ -317,8 +318,11 @@ final class GuzzleIzettleClientTest extends TestCase
     {
         $data = 'getJsonTest';
         $responseMock =  Mockery::mock(ResponseInterface::class);
-        $responseMock->shouldReceive('getBody')->once()->andReturnSelf();
-        $responseMock->shouldReceive('getContents')->once()->andReturn($data);
+
+        $streamMock = Mockery::mock(StreamInterface::class);
+        $streamMock->shouldReceive('getContents')->once()->andReturn($data);
+
+        $responseMock->shouldReceive('getBody')->once()->andReturn($streamMock);
 
         $izettleClient = new GuzzleIzettleClient(new GuzzleClient(), self::CLIENT_ID, self::CLIENT_SECRET);
         $izettleClient->setAccessToken($this->getAccessToken());
